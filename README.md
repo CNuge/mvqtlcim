@@ -155,9 +155,9 @@ you will have two result files, "example_CIM_M1Rst.txt" and "example_CIMPermuM1R
 	20-27	The estimates for vector mu2  
 	28-91	The estimates for matrix sigma arranged by row  
 
-With the two files generated above, when you run  
+With the two files generated above, when you run : 
 `Rscript lrPlot.r -i example_CIM_M1Rst.txt -p example_CIMPermuM1Rst.txt -w 1`  
-it will generate two files. One is "example_CIM_M1Rst_SigQtl_W1_0.05.txt", which contains the results in the positions where the peak LR value is above the threshold. The other is a pdf file, namely "example_CIM_M1RstLRS_W1_0.05.pdf", plotting the profile of LR against the genome position.
+Two files will be generated. The first is "example_CIM_M1Rst_SigQtl_W1_0.05.txt", which contains the results in the positions where the peak LR value is above the specified threshold (-w 1 in this case, which is genome wide significance as calculated by the permutation tests). The other is a pdf file "example_CIM_M1RstLRS_W1_0.05.pdf", which contains a plot of the profile of LR against the genome position.
 
 # Reference
 Fenxiang Liu, Chunfa Tong*, Shentong Tao, Jiyan Wu, Yuhua Chen, Dan Yao, Huogen Li, Jisen Shi. 2017. MVQTLCIM: composite interval mapping of multivariate traits in a hybrid F1 population of outbred species. BMC Bioinformatics,18:515
