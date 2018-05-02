@@ -48,11 +48,12 @@ Running the commands: `./mvqtlcim` and `Rscript lrPlot.r` will provide the follo
 The input data is formated in a plain text as the following example file. In the marker data part, the first column is the serial number of linkage groups, the second the serial number of markers within a linkage group, the third the marker distance from the first marker within a linkage group, the fourth and fifth the marker phases of parents P1 and P2, respectively, and from the sixth column on, each is the marker genotype of an individual at the marker. Similarly, from the six column on in the trait data part, each cell is a trait value at a time point of an individual. In addition, a missing genotype is coded by "--", but missing phenotype data are not allowed.
 Generic numbering of linkage groups, markers and individuals is required! You will likely want to create a reference file to keep track of the actual names and numbers that correspond to the program inputs.
 Note the following when preparing the input file:
-* Custom linkage group names are not permitted, in the `Marker_Number_Within_Groups:` section sequentially number the linkage groups `LG1`, `LG2` ... 
+* Custom linkage group names are not permitted, in the `Marker_Number_Within_Groups:` section sequentially number the linkage groups `LG1`, `LG2` etc. 
 * In the `Marker_Data:` section just provide the linkage group number as an integer
 * All markers need to be numbered 1 -> n for each linkage group.
 * Markers at the same cM position on a linkage group are not allowed. Remove duplicates!
 * Phenotypic trait names must be generic numbers as well.
+* Individual names must be generic and numbered sequentially as `#1`, `#2`, `#3` etc.
 
 ```
 	Pop_Type:	F1  
