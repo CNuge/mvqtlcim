@@ -6,14 +6,14 @@ cat("Version: 2016-05-10\n")
 cat("Contact: Chunfa Tong <tongchf@njfu.edu.cn>\n\n")
 cat("Usage: Rscript lrPlot.r -i qtlrstfile [options]\n\n")
 cat("Options:\n")
-cat("\t-p\tstr\tresult file for permutations\n")
-cat("\t-w\tint\tjust taking the value of 0, 1 or 2 [0]\n") 
+cat("\t-p\tstr\tthe mvqtlcim result file for permutations\n")
+cat("\t-w\tint\tAn integer with the value of 0, 1 or 2 [0]\n") 
 cat("\t\t\t0: manually giving the threshold value\n")
 cat("\t\t\t1: genome-wide threshold determined by permutations\n")
 cat("\t\t\t2: linkage-group-wide threshold determined by permutations\n")
-cat("\t-s\tfloat\tsignificant level in(0.0001,0.2) [0.05]\n")
+cat("\t-s\tfloat\tsignificance level in floating point format i.e.: 0.0001 0.2 [0.05]\n")
 cat("\t-t\tstr\tthe plot format of 'pdf','png','jpg','tif' and 'bmp' [pdf]\n")
-cat("\t-v\tfloat\tgiving the threshold value manually\n\n")
+cat("\t-v\tfloat\tProvide a significance threshold value manually\n\n")
 stop("Note: Parameter error!")
 }
 
@@ -47,7 +47,7 @@ for(i in seq(6,arglth,2)){
 # type could be "pdf","bmp","png","jpg" or "tif"
   
   if(wglevel!=0 && wglevel!=1 && wglevel!=2){
-	stop("The parameter wglevel value error!")
+	stop("parameter wglevel (-w) value error! Pass any one of: 0, 1, 2")
   }
   if(type!="pdf" && type!="bmp" && type!="png" && type!="jpg" && type!="tif"){
 	stop("The parameter type value error!")
@@ -59,14 +59,14 @@ for(i in seq(6,arglth,2)){
 
   if(is.null(permurstfile)){
 	if(wglevel==1 || wglevel==2){
-		stop("The parameter wglevel should be set to 0 when you did not provide the permutation result file!")
+		stop("The parameter wglevel should be set to 0 when you have not provided the permutation result file!")
 	}
   }else{
 	if(wglevel==0){
-		stop("The parameter wglevel should be set to 1 or 2 when you provide the permutation result file!")
+		stop("The parameter wglevel should be set to 1 or 2 when you have provided the permutation result file!")
 	}
 	if(!is.null(threshold)){
-		stop("The parameter threshold should not be set when you provide the permutation result file!")
+		stop("The parameter threshold should not be set when you have not provided the permutation result file!")
 	}
   }
 
@@ -181,7 +181,7 @@ for(i in seq(6,arglth,2)){
      
   if( wglevel==0 && is.numeric(threshold) ){
 	head0 <- paste("# QTL mapping result for model ",dat[1,8], 
-		" at the significant level of ",siglevel,"\n# with the whole-genome-wide threshold of ",
+		" at the significance level of ",siglevel,"\n# with the whole-genome-wide threshold of ",
 		threshold,"\n",sep="")
      write(head0,outfile)
 	for(i in 1:nugm){
@@ -196,7 +196,7 @@ for(i in seq(6,arglth,2)){
 
  if( wglevel==1 ){
 	head0 <- paste("# QTL mapping result for model ",dat[1,8], 
-		" at the significant level of ",siglevel,"\n# with the whole-genome-wide threshold of ",
+		" at the significance level of ",siglevel,"\n# with the whole-genome-wide threshold of ",
 		wgthd,"\n",sep="")
      write(head0,outfile)
 	for(i in 1:nugm){
